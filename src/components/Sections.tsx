@@ -14,6 +14,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { useState, ReactNode } from "react";
+import { ProjectCard } from "./ProjectCard";
 
 // Reusable ScrollReveal wrapper
 function ScrollReveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
@@ -143,103 +144,36 @@ export function Skills() {
 const projects = [
   {
     title: "FlowBoard",
-    subtitle: "Scrum-Based Project Management System",
-    desc: "A modern project management platform inspired by agile and Scrum methodologies. Built to help teams organize tasks, manage workflows, track sprint progress, and improve collaboration through a structured development process.",
-    features: [
-      "Sprint Planning",
-      "Task Management",
-      "Agile Workflow Support",
-      "Team Collaboration",
-      "Progress Tracking",
-    ],
-    tags: ["Java", "MySQL", "Software Engineering", "Scrum"],
+    subtitle: "SCRUM-BASED PROJECT PLANNER",
+    desc: "A Scrum-based project planning platform for task tracking, sprint management, and team collaboration.",
+    tags: ["Java", "React", "TypeScript", "MySQL"],
     github: "https://github.com/AnshumanSingh11/FlowBoard.git",
+    liveDemo: "https://github.com/AnshumanSingh11/FlowBoard.git",
+    projectType: "Individual Project",
   },
   {
     title: "Find My Campus",
-    subtitle: "Campus Navigation System",
-    desc: "A desktop-based campus navigation application designed to help students quickly locate classrooms, laboratories, departments, administrative offices, and campus facilities through an intuitive interface.",
-    features: [
-      "Building Locator",
-      "Department Search",
-      "Interactive Navigation",
-      "Student-Friendly Interface",
-      "Campus Information Access",
-    ],
+    subtitle: "CAMPUS NAVIGATION SYSTEM",
+    desc: "A desktop navigation utility designed to help students and visitors easily locate buildings, classrooms, and facilities across the campus.",
     tags: ["Java", "Swing", "GUI", "Desktop Application"],
     github: "https://github.com/AnshumanSingh11/Find-My-Campus.git",
+    liveDemo: "https://github.com/AnshumanSingh11/Find-My-Campus.git",
+    projectType: "Individual Project",
   },
 ];
+
 
 export function Projects() {
   return (
     <section id="projects" className="py-24 px-6 max-w-5xl mx-auto relative z-20">
       <ScrollReveal>
-        <p className="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3">Work</p>
+        <p className="text-sm uppercase tracking-widest text-[#55CCFF] font-semibold mb-3">Work</p>
         <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
           Selected projects.
         </h2>
-        <div className="grid md:grid-cols-2 gap-8 mt-10">
-          {projects.map((p, idx) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              whileHover={{ y: -6 }}
-              className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/50 backdrop-blur-sm dark:bg-neutral-900/60 p-8 hover:border-[#55CCFF]/50 transition flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-semibold text-[#55CCFF] uppercase tracking-wider">
-                  {p.subtitle}
-                </span>
-                <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mt-1">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed">
-                  {p.desc}
-                </p>
-
-                <div className="mt-6">
-                  <h4 className="text-xs uppercase tracking-wider font-semibold text-neutral-500 dark:text-neutral-400 mb-2">
-                    Key Features
-                  </h4>
-                  <ul className="grid grid-cols-1 gap-1.5 text-xs text-neutral-600 dark:text-neutral-400">
-                    {p.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#55CCFF]" />
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs px-2.5 py-0.5 rounded-full bg-neutral-150/70 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 border border-neutral-200/40 dark:border-neutral-750/30"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-neutral-200/60 dark:border-neutral-800/40">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={p.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 text-xs px-4 py-2 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 transition font-semibold cursor-pointer w-full"
-                >
-                  <Github className="h-3.5 w-3.5" /> View Code
-                </motion.a>
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          {projects.map((p) => (
+            <ProjectCard key={p.title} {...p} />
           ))}
         </div>
       </ScrollReveal>
